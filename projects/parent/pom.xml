@@ -1,0 +1,25 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.gwtproject.test</groupId>
+    <artifactId>parent</artifactId>
+    <version>HEAD-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <test-repository>experiment-1</test-repository>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>gwt-relocation-test</id>
+            <url>https://tbroyer.github.io/gwt-relocation-tests/repositories/${test-repository}</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>
