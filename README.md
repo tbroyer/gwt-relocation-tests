@@ -62,6 +62,14 @@ The string properties `lib-with-user.version`, `lib-with-dev.version`, and `lib-
 
 ### new-with-bom
 
-This project uses the `org.gwtproject:gwt` BOM for dependency management.
+This project uses the `org.gwtproject:gwt` BOM for dependency management, defaulting to version `2.10.0`.
 
 It works the same as `old-with-bom` except the test libraries default to their version `2.0.0`.
+
+### old-without-bom
+
+This project is the same as `old-with-bom` except it doesn't use the BOM but directly depends on `gwt-user` and `gwt-dev`.
+
+### new-without-bom
+
+This project is the same as `new-with-bom` except it doesn't use the BOM but directly depends on `gwt-user` and `gwt-dev`.
