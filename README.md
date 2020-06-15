@@ -111,7 +111,30 @@ Gradle works **exactly** the same as Maven here, except it won't warn when reloc
 
 ### Experiment #2
 
-As expected, results are similar to those the `experiment-1`, with one notable exception:
+As expected, results are similar to those of `experiment-1`, with one notable exception:
 using the `com.google.gwt:gwt:2.10.0` BOM no longer generates errors,
 and instead (as expected), works exactly the same as using the `org.gwtproject:gwt:2.10.0` BOM (as they have the same content).
 In the `old-with-bom` project, upgrading the version through `gwt.version=2.10.0`, dependencies are now automatically relocated (along with a warning in Maven).
+
+### Experiment #3
+
+As expected, results are similar to those of `experiment-2`,
+there are however notable changes with Gradle.
+
+In the `old-without-bom` project with `lib-with-user.version=2.0.0`,
+with Gradle `com.google.gwt:gwt-user` is automatically upgraded to `org.gwtproject:gwt-user:2.10.0`,
+just as if everything was still at the same `com.google.gwt` groupId
+(and creating a mismatch between `gwt-user` and `gwt-dev`, but this is expected here,
+and again just as if everything was still at `com.google.gwt`).  
+With Maven, due to the ["nearest definition" rule](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html), things work as in `experiment-2` though
+(and without warning as the transitive `com.google.gwt:gwt-user:2.10.0` is ignored/superseded before even being resolved).
+
+The `new-with-bom` and `new-without-bom` projects behave just like with `experiment-2`,
+the transitive relocation to the referencing dependency don't cause any problem,
+not even a warning in Maven.  
+Gradle displays the `com.google.gwt` dependencies in its dependency graph
+but the dependency/relocation cycle doesn't cause any problem.
+
+The `new-without-bom` project with `lib-with-user.version=1.0.0` will automatically upgrade the transitive `com.google.gwt:gwt-user:2.9.0` to `org.gwtproject:gwt-user:2.10.0` with Gradle.  
+With Maven, unfortunately, despite the dependency to the relocating `com.google.gwt:gwt-user:2.10.0` coming earlier (through `org.gwtproject:gwt-user:2.10.0`) than `com.google.gwt:gwt-user:2.9.0` (through `org.gwtproject.test:lib-with-user:1.0.0`),
+and at the same depth, there will still be a mix of `com.google.gwt` and `org.gwtproject`.
