@@ -19,6 +19,12 @@ The repository also includes libraries with dependencies on `gwt-user`, `gwt-dev
 Each library comes in two versions: `1.0.0` depends on `com.google.gwt:*:2.9.0` whereas `2.0.0` has upgraded to `org.gwtproject:*:2.10.0`,
 this should make it possible to test various combinations (depending on whether the `2.0.0` is included in the dependency graph or not).
 
+### Experiment #2
+
+The `experiment-2` repository is the same as `experiment-1`,
+except the `com.google.gwt:gwt:2.10.0` BOM doesn't relocate,
+and is instead an exact copy of the `org.gwtproject:gwt:2.10.0` BOM.
+
 ## Projects
 
 When running Maven commands, `-Dmaven.repo.local=.repository` is automatically used to avoid polluting your local repository and make things easier to clean
