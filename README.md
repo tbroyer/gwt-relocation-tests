@@ -31,6 +31,13 @@ The `experiment-3` repository is the same as `experiment-2`,
 except `org.gwtproject:gwt-user` and `org.gwtproject:gwt-dev` have a dependency on `com.google.gwt:gwt-user` and `com.google.gwt:gwt-dev` respectively
 (those artifacts relocating to the former).
 
+### Experiment #4
+
+The `experiment-4` repository is the same as `experiment-3`
+with an additional relocation from `org.gwtproject` to `com.google.gwt` for version `2.9.0`
+(the `org.gwtproject:gwt:2.9.0` BOM doesn't relocate but references both `com.google.gwt` and `org.gwtproject` artifacts,
+just like the `com.google.gwt:gwt:2.10.0` BOM in reverse).
+
 ## Projects
 
 When running Maven commands, `-Dmaven.repo.local=.repository` is automatically used to avoid polluting your local repository and make things easier to clean
