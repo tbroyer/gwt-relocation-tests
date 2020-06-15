@@ -102,3 +102,10 @@ Using the `com.google.gwt:*:2.10.0` dependencies automatically relocates to `org
 
 Gradle works **exactly** the same as Maven here, except it won't warn when relocating
 (and you have more options for resolving mixed cases).
+
+### Experiment #2
+
+As expected, results are similar to those the `experiment-1`, with one notable exception:
+using the `com.google.gwt:gwt:2.10.0` BOM no longer generates errors,
+and instead (as expected), works exactly the same as using the `org.gwtproject:gwt:2.10.0` BOM (as they have the same content).
+In the `old-with-bom` project, upgrading the version through `gwt.version=2.10.0`, dependencies are now automatically relocated (along with a warning in Maven).
