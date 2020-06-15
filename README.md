@@ -21,8 +21,9 @@ this should make it possible to test various combinations (depending on whether 
 
 ## Projects
 
-When running Maven commands, pass `-Dmaven.repo.local=…` to avoid polluting your local repository and make things easier to clean.
-Similarly for Gradle, pass `--gradle-user-home …`.
+When running Maven commands, `-Dmaven.repo.local=.repository` is automatically used to avoid polluting your local repository and make things easier to clean
+(at the expense of having to re-download many Maven plugins).
+For Gradle, pass `--gradle-user-home …` to achieve something similar.
 
 You can switch repository by setting the `test-repository` property (`-Dtest-repository=…` with Maven, `-Ptest-repository=…` with Gradle);
 the default value is `experiment-1`.
@@ -32,7 +33,7 @@ whereas Gradle projects are all subprojects of the project at the root of the re
 
 To test dependency graphs, use
 ```sh
-mvn -Dmaven.repo.local=.repository -f projects/<project>/pom.xml dependency:tree
+mvn -f projects/<project>/pom.xml dependency:tree
 ```
 or
 ```sh
