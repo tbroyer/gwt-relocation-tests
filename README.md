@@ -73,3 +73,26 @@ This project is the same as `old-with-bom` except it doesn't use the BOM but dir
 ### new-without-bom
 
 This project is the same as `new-with-bom` except it doesn't use the BOM but directly depends on `gwt-user` and `gwt-dev`.
+
+## Early conclusions
+
+### Experiment #1
+
+The `org.gwtproject:gwt` BOM from `experiment-1` works great for projects updated to use it,
+and will automatically upgrade their dependencies to use `org.gwtproject` instead of `com.google.gwt`.
+
+Projects not using the BOM run the risk of having a mix of `org.gwtproject` and `com.google.gwt` dependencies,
+unless they add dependency management rules to upgrade `com.google.gwt` dependencies to the relocated version.
+
+Projects still on GWT 2.9.0, whether they use the BOM or not,
+run the risk of having a mix `org.gwtproject` and `com.google.gwt` dependencies,
+unless they use exclusions on their dependencies that bring the `org.gwtproject` transitively.
+
+Using the `com.google.gwt:gwt:2.10.0` BOM leads to errors,
+as Maven doesn't automatically relocates it to `org.gwtproject:gwt:2.10.0`,
+so it complains that the `gwt-user` and `gwt-dev` dependencies don't have a version.
+
+Using the `com.google.gwt:*:2.10.0` dependencies automatically relocates to `org.gwtproject:*:2.10.0` with a warning.
+
+Gradle works **exactly** the same as Maven here, except it won't warn when relocating
+(and you have more options for resolving mixed cases).
