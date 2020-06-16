@@ -145,3 +145,17 @@ but the dependency/relocation cycle doesn't cause any problem.
 The `new-without-bom` project with `lib-with-user.version=1.0.0` will automatically upgrade the transitive `com.google.gwt:gwt-user:2.9.0` to `org.gwtproject:gwt-user:2.10.0` with Gradle.  
 With Maven, unfortunately, despite the dependency to the relocating `com.google.gwt:gwt-user:2.10.0` coming earlier (through `org.gwtproject:gwt-user:2.10.0`) than `com.google.gwt:gwt-user:2.9.0` (through `org.gwtproject.test:lib-with-user:1.0.0`),
 and at the same depth, there will still be a mix of `com.google.gwt` and `org.gwtproject`.
+
+### Experiment #4
+
+As expected, results are similar to those of `experiment-3`,
+with a notable change with Maven.
+
+Using the `org.gwtproject:gwt:2.9.0` BOM helps stay on GWT 2.9.0
+without risking mixed `com.google.gwt` and `org.gwtproject` dependencies,
+by automatically downgrading the latter (to `2.9.0`, which relocates to the former).
+
+There does not seem to be any downside to this "old version relocates to the old groupId, new version relocates to the new groupId",
+but I haven't tested all combinations (particularly with Gradle, where dependency constraints are transitive, **and** published as part of [Gradle Module Metadata](https://docs.gradle.org/current/userguide/publishing_gradle_module_metadata.html)).
+
+**This needs more tests before being conclusive.**
