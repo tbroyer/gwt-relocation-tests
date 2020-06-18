@@ -44,6 +44,9 @@ The `experiment-5` repository is the same as `experiment-4`
 with additional [Gradle Module Metadata](https://github.com/gradle/gradle/blob/3a013ff057b0db62cd05215abee49cedc4d05355/subprojects/docs/src/docs/design/gradle-module-metadata-latest-specification.md) for the libraries,
 as if they had been deployed with Gradle and using `api(platform("<the GWT BOM>"))`.
 
+In addition, version `2.10.0` upgrades Jetty, ASM, and HtmlUnit,
+and removes the dependency on Ant.
+
 ## Projects
 
 When running Maven commands, `-Dmaven.repo.local=.repository` is automatically used to avoid polluting your local repository and make things easier to clean
