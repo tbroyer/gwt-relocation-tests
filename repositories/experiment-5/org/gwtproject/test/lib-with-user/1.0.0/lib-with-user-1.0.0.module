@@ -1,0 +1,89 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.gwtproject.test",
+    "module": "lib-with-user",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.gwt",
+          "module": "gwt",
+          "version": {
+            "requires": "2.9.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "com.google.gwt",
+          "module": "gwt-user"
+        }
+      ],
+      "files": [
+        {
+          "name": "lib-with-user-1.0.0.jar",
+          "url": "lib-with-user-1.0.0.jar",
+          "size": 22,
+          "sha512": "5e2f959f36b66df0580a94f384c5fc1ceeec4b2a3925f062d7b68f21758b86581ac2adcfdde73a171a28496e758ef1b23ca4951c05455cdae9357cc3b5a5825f",
+          "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+          "sha1": "b04f3ee8f5e43fa3b162981b50bb72fe1acabb33",
+          "md5": "76cdb2bad9582d23c1f6f4d868218d6c"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.gwt",
+          "module": "gwt",
+          "version": {
+            "requires": "2.9.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "com.google.gwt",
+          "module": "gwt-user"
+        }
+      ],
+      "files": [
+        {
+          "name": "lib-with-user-1.0.0.jar",
+          "url": "lib-with-user-1.0.0.jar",
+          "size": 22,
+          "sha512": "5e2f959f36b66df0580a94f384c5fc1ceeec4b2a3925f062d7b68f21758b86581ac2adcfdde73a171a28496e758ef1b23ca4951c05455cdae9357cc3b5a5825f",
+          "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+          "sha1": "b04f3ee8f5e43fa3b162981b50bb72fe1acabb33",
+          "md5": "76cdb2bad9582d23c1f6f4d868218d6c"
+        }
+      ]
+    }
+  ]
+}

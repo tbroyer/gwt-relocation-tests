@@ -38,6 +38,12 @@ with an additional relocation from `org.gwtproject` to `com.google.gwt` for vers
 (the `org.gwtproject:gwt:2.9.0` BOM doesn't relocate but references both `com.google.gwt` and `org.gwtproject` artifacts,
 just like the `com.google.gwt:gwt:2.10.0` BOM in reverse).
 
+### Experiment #5
+
+The `experiment-5` repository is the same as `experiment-4`
+with additional [Gradle Module Metadata](https://github.com/gradle/gradle/blob/3a013ff057b0db62cd05215abee49cedc4d05355/subprojects/docs/src/docs/design/gradle-module-metadata-latest-specification.md) for the libraries,
+as if they had been deployed with Gradle and using `api(platform("<the GWT BOM>"))`.
+
 ## Projects
 
 When running Maven commands, `-Dmaven.repo.local=.repository` is automatically used to avoid polluting your local repository and make things easier to clean
