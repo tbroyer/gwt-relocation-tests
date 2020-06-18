@@ -167,4 +167,32 @@ by automatically downgrading the latter (to `2.9.0`, which relocates to the form
 There does not seem to be any downside to this "old version relocates to the old groupId, new version relocates to the new groupId",
 but I haven't tested all combinations (particularly with Gradle, where dependency constraints are transitive, **and** published as part of [Gradle Module Metadata](https://docs.gradle.org/current/userguide/publishing_gradle_module_metadata.html)).
 
-**This needs more tests before being conclusive.**
+### Experiment #5
+
+As expected, results are similar to those of `experiment-4`,
+with notable changes with Gradle.
+
+Depending on a library that uses the BOM as a `platform`
+brings the BOM dependency management as dependency constraints.
+This has the effect of automatically upgrading both `gwt-user` and `gwt-dev`
+even in projects that don't use a BOM and depend on a library,
+even if that library only brings `gwt-user` or `gwt-dev`
+(e.g. `old-with-bom` and `old-without-bom`, with `-Plib-with-user.version=2.0.0`).  
+Due to Gradle's "highest version" rule,
+this won't however downgrade dependencies in a reverse setup
+(e.g. `new-with-bom` or `new-without-bom`, with `-Plib-with-user.version=1.0.0`).
+
+Projects that use the `org.gwtproject:gwt:2.9.0` BOM
+(e.g. `new-with-bom` with `-Pgwt.version=2.9.0`)
+continue to work OK,
+even when they also depend on a library bringing `2.10.0`
+(everything's upgraded to `2.10.0` then, both `gwt-user` and `gwt-dev`,
+eliminating the risk of mixed `org.gwtproject` and `com.google.gwt` dependencies).  
+The "old version relocates to the old groupId, new version relocates to the new groupId" doesn't seem to cause any issue then.
+
+This suggests actually deploying Gradle Module Metadata for GWT itself
+to make sure that (unless overridden) `gwt-user` and `gwt-dev` versions are aligned
+whichever the setup in consuming projects.
+This also means that, if available, BOMs should probably try to import other BOMs
+rather than adding dependency management for discrete artifacts
+(e.g. Jetty or ASM; though Jetty only has a BOM starting with `9.3.26.v20190403`, and ASM doesn't have one).
