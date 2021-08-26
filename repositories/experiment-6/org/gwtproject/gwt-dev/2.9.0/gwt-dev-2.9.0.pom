@@ -1,0 +1,11 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.gwtproject</groupId>
+  <artifactId>gwt-dev</artifactId>
+  <version>2.9.0</version>
+  <distributionManagement>
+    <relocation>
+      <groupId>com.google.gwt</groupId>
+    </relocation>
+  </distributionManagement>
+</project>

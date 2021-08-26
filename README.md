@@ -47,6 +47,12 @@ as if they had been deployed with Gradle and using `api(platform("<the GWT BOM>"
 In addition, version `2.10.0` upgrades Jetty, ASM, and HtmlUnit,
 and removes the dependency on Ant.
 
+### Experiment #6
+
+The `experiment-6` repository is the same as `experiment-5`
+with additional Gradle Module Metadata for `org.gwtproject:gwt-user:2.10.0` and `org.gwtproject:gwt-dev:2.10.0`,
+except without Grade Module Metadata for the libraries.
+
 ## Projects
 
 When running Maven commands, `-Dmaven.repo.local=.repository` is automatically used to avoid polluting your local repository and make things easier to clean
