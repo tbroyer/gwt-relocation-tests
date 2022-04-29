@@ -202,3 +202,13 @@ whichever the setup in consuming projects.
 This also means that, if available, BOMs should probably try to import other BOMs
 rather than adding dependency management for discrete artifacts
 (e.g. Jetty or ASM; though Jetty only has a BOM starting with `9.3.26.v20190403`, and ASM doesn't have one).
+
+### Experiment #6
+
+As expected, results are similar to those of `experiment-4`,
+with notable changes with Gradle.
+
+Whether you use a BOM or not,
+depending on a library that brings a newer version of GWT
+automatically upgrades both `gwt-user` and `gwt-dev`,
+even if the library depended only on one of them.
