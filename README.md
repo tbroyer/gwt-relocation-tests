@@ -53,6 +53,14 @@ The `experiment-6` repository is the same as `experiment-5`
 with additional Gradle Module Metadata for `org.gwtproject:gwt-user:2.10.0` and `org.gwtproject:gwt-dev:2.10.0`,
 except without Grade Module Metadata for the libraries.
 
+### Experimet #7
+
+The `experiment-7` repository is the same as `experiment-2`
+with an additional 2.11.0 version for `org.gwtproject`.
+The BOM references `com.google.gwt:*:2.10.0` to test behavior for the next release,
+without having to release `com.google.gwt` again.
+Libraries have a version 3.0.0 depending on 2.11.0.
+
 ## Projects
 
 When running Maven commands, `-Dmaven.repo.local=.repository` is automatically used to avoid polluting your local repository and make things easier to clean

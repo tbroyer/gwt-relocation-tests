@@ -1,0 +1,24 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.gwtproject.test</groupId>
+    <artifactId>lib-with-dev-only</artifactId>
+    <version>3.0.0</version>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.gwtproject</groupId>
+                <artifactId>gwt</artifactId>
+                <version>2.11.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-dev</artifactId>
+        </dependency>
+    </dependencies>
+</project>
