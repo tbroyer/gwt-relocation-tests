@@ -220,3 +220,16 @@ Whether you use a BOM or not,
 depending on a library that brings a newer version of GWT
 automatically upgrades both `gwt-user` and `gwt-dev`,
 even if the library depended only on one of them.
+
+## Experiment #7
+
+Only the `new-with-bom` and `new-without-bom` projects are meaningful.
+As expected, `new-with-bom` forces the versions with Maven, and using `gwt.version=2.10.0` with `lib-with-user.version=3.0.0` will only use 2.10.0.
+Using `lib-with-user.version=1.0.0` will correctly follow the relocation (with a warning), and then even upgrade to 2.11.0 if needed.
+For `new-without-bom`, using `lib-with-user=1.0.0` will mix `com.google.gwt:gwt-user:2.9.0` with `org.gwtproject:gwt-user` (whichever the `gwt.version`), same as `experiment-2`.
+Results are similar with Gradle, with the exception that the "nearest definition" rule doesn't exist so using `gwt.version=2.10.0` with `lib-with-user.version=3.0.0` will use a mix of 2.10.0 and 2.11.0, whether the BOM is used or not.
+
+Overall, relocations work exactly as expected, and relocated artifacts are upgraded to 2.11.0 without error or even warning.
+
+This emphasises that projects really should use the BOM,
+but everything works exactly as one would expect.
